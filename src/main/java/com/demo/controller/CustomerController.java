@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import com.demo.dto.CreateCustomerRequest;
 import com.demo.dto.GetCustomerResponse;
-import com.demo.repository.Customer;
 import com.demo.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
