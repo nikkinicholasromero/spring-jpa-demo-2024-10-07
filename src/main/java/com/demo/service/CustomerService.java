@@ -1,5 +1,7 @@
-package com.demo;
+package com.demo.service;
 
+import com.demo.repository.Customer;
+import com.demo.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

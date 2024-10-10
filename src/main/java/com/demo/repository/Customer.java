@@ -1,5 +1,6 @@
-package com.demo;
+package com.demo.repository;
 
+import com.demo.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import org.apache.commons.lang3.builder.ToStringBuilder;

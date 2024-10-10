@@ -1,5 +1,7 @@
-package com.demo;
+package com.demo.controller;
 
+import com.demo.repository.Customer;
+import com.demo.service.CustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
