@@ -5,6 +5,7 @@ import com.demo.dto.GetCustomerResponse;
 import com.demo.dto.UpdateCustomerRequest;
 import com.demo.repository.Customer;
 import com.demo.repository.CustomerRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,12 @@ public class CustomerService {
                 .stream()
                 .map(e -> new GetCustomerResponse(e.id(), e.name()))
                 .toList();
+    }
+
+    public GetCustomerResponse getCustomer(String id) {
+        return customerRepository.findById(id)
+                .map(e -> new GetCustomerResponse(e.id(), e.name()))
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     public void createCustomer(CreateCustomerRequest request) {
