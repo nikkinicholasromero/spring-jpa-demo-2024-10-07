@@ -2,5 +2,5 @@ package com.demo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DemoTableRepository extends JpaRepository<DemoTable, String> {
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 }

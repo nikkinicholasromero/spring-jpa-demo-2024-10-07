@@ -5,16 +5,16 @@ import jakarta.persistence.Id;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
-public class DemoTable extends BaseEntity<String> {
+public class Customer extends BaseEntity<String> {
     @Id
     private String id;
     private String name;
 
-    protected DemoTable() {
+    protected Customer() {
         // Note: Required by JPA. Do not use.
     }
 
-    public DemoTable(String id, String name) {
+    public Customer(String id, String name) {
         this.id = id;
         this.name = name;
     }
