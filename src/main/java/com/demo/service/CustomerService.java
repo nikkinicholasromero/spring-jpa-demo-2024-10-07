@@ -1,10 +1,13 @@
 package com.demo.service;
 
+import com.demo.dto.CreateCustomerRequest;
+import com.demo.dto.GetCustomerResponse;
 import com.demo.repository.Customer;
 import com.demo.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CustomerService {
@@ -14,7 +17,18 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> findAll() {
-        return customerRepository.findAll();
+    public List<GetCustomerResponse> findAll() {
+        return customerRepository.findAll()
+                .stream()
+                .map(e -> new GetCustomerResponse(e.id(), e.name()))
+                .toList();
+    }
+
+    public void createCustomer(CreateCustomerRequest request) {
+        Customer customer = new Customer(
+                UUID.randomUUID().toString(),
+                request.name());
+
+        customerRepository.save(customer);
     }
 }

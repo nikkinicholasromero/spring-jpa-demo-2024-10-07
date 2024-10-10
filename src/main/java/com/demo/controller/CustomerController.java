@@ -1,10 +1,10 @@
 package com.demo.controller;
 
+import com.demo.dto.CreateCustomerRequest;
+import com.demo.dto.GetCustomerResponse;
 import com.demo.repository.Customer;
 import com.demo.service.CustomerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +18,12 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customer> findAll() {
+    public List<GetCustomerResponse> findAll() {
         return customerService.findAll();
+    }
+
+    @PostMapping
+    public void createCustomer(@RequestBody CreateCustomerRequest request) {
+        customerService.createCustomer(request);
     }
 }
