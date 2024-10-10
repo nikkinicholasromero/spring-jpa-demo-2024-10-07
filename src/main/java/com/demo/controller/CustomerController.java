@@ -28,12 +28,12 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public void createCustomer(@RequestBody CreateCustomerRequest request) {
-        customerService.createCustomer(request);
+    public GetCustomerResponse createCustomer(@RequestBody CreateCustomerRequest request) {
+        return customerService.createCustomer(request);
     }
 
     @PutMapping("/customer")
-    public void updateCustomer(@RequestBody UpdateCustomerRequest request) {
-        customerService.updateCustomer(request);
+    public GetCustomerResponse updateCustomer(@RequestBody UpdateCustomerRequest request) {
+        return customerService.updateCustomer(request);
     }
 }

@@ -32,19 +32,29 @@ public class CustomerService {
                 .orElseThrow(EntityNotFoundException::new);
     }
 
-    public void createCustomer(CreateCustomerRequest request) {
+    public GetCustomerResponse createCustomer(CreateCustomerRequest request) {
         Customer customer = new Customer(
                 UUID.randomUUID().toString(),
                 request.name());
 
         customerRepository.save(customer);
+
+        return new GetCustomerResponse(customer.id(), customer.name());
     }
 
-    public void updateCustomer(UpdateCustomerRequest request) {
-        customerRepository.findById(request.id())
-                .ifPresent(e -> {
+    public GetCustomerResponse updateCustomer(UpdateCustomerRequest request) {
+        return customerRepository.findById(request.id())
+                .map(e -> {
                     e.updateName(request.name());
+                    try {
+                        Thread.sleep(30_000);
+                    } catch (InterruptedException ex) {
+                        throw new RuntimeException(ex);
+                    }
                     customerRepository.save(e);
-                });
+
+                    return new GetCustomerResponse(e.id(), e.name());
+                })
+                .orElseThrow(EntityNotFoundException::new);
     }
 }
