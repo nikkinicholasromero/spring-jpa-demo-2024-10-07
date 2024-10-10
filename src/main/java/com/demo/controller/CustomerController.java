@@ -17,8 +17,8 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<GetCustomerResponse> findAll() {
-        return customerService.findAll();
+    public List<GetCustomerResponse> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @PostMapping

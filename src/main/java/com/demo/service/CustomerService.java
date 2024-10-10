@@ -17,7 +17,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public List<GetCustomerResponse> findAll() {
+    public List<GetCustomerResponse> getAllCustomers() {
         return customerRepository.findAll()
                 .stream()
                 .map(e -> new GetCustomerResponse(e.id(), e.name()))
