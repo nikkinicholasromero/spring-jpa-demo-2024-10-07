@@ -29,6 +29,10 @@ public class Customer extends BaseEntity<String> {
         return name;
     }
 
+    public void updateName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)

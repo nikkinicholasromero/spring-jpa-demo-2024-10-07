@@ -2,6 +2,7 @@ package com.demo.service;
 
 import com.demo.dto.CreateCustomerRequest;
 import com.demo.dto.GetCustomerResponse;
+import com.demo.dto.UpdateCustomerRequest;
 import com.demo.repository.Customer;
 import com.demo.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,13 @@ public class CustomerService {
                 request.name());
 
         customerRepository.save(customer);
+    }
+
+    public void updateCustomer(UpdateCustomerRequest request) {
+        customerRepository.findById(request.id())
+                .ifPresent(e -> {
+                    e.updateName(request.name());
+                    customerRepository.save(e);
+                });
     }
 }
