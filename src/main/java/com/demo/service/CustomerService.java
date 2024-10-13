@@ -46,13 +46,7 @@ public class CustomerService {
         return customerRepository.findById(request.id())
                 .map(e -> {
                     e.updateName(request.name());
-                    try {
-                        Thread.sleep(30_000);
-                    } catch (InterruptedException ex) {
-                        throw new RuntimeException(ex);
-                    }
                     customerRepository.save(e);
-
                     return new GetCustomerResponse(e.id(), e.name());
                 })
                 .orElseThrow(EntityNotFoundException::new);
